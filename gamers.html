@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hero-PC – 200+ Gaming Deals</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet"/>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Orbitron', sans-serif;
+      margin: 0;
+      background: #0d1117;
+      color: #ffffff;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      padding: 40px 20px;
+      text-align: center;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.5);
+    }
+
+    .logo-container img {
+      width: 100px;
+      border-radius: 50%;
+      box-shadow: 0 0 20px #00ffae;
+      margin-bottom: 15px;
+      border: 2px solid #00ffae;
+    }
+
+    .brand-glow {
+      font-size: 2.8rem;
+      color: #00ffae;
+      text-shadow: 0 0 15px #00ffae;
+      margin: 10px 0;
+    }
+
+    nav {
+      margin-top: 15px;
+    }
+
+    .nav-link {
+      color: #dcdcdc;
+      text-decoration: none;
+      margin: 0 12px;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+
+    .nav-link:hover {
+      color: #00ffea;
+      text-shadow: 0 0 10px #00ffea;
+    }
+
+    .section {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 30px 20px;
+      background: #161b22;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(88, 166, 255, 0.1);
+    }
+
+    .section h2 {
+      font-size: 1.9rem;
+      color: #00ffae;
+      margin-bottom: 30px;
+      text-align: center;
+      text-shadow: 0 0 12px #00ffae;
+    }
+
+    .deals-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .deal-box {
+      background: #21262d;
+      padding: 18px;
+      border-radius: 12px;
+      text-align: center;
+      border: 1px solid #30363d;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 8px rgba(0, 255, 174, 0.1);
+    }
+
+    .deal-box:hover {
+      transform: scale(1.03);
+      border-color: #00ffae;
+      box-shadow: 0 0 18px #00ffae88;
+    }
+
+    .deal-box a {
+      color: #00ffae;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1rem;
+      display: block;
+    }
+
+    .footer-note {
+      text-align: center;
+      padding: 25px;
+      background: #0d1117;
+      color: #8b949e;
+      font-size: 0.9rem;
+      border-top: 1px solid #30363d;
+    }
+
+    @media screen and (max-width: 600px) {
+      .brand-glow {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo-container">
+      <img src="WhatsApp Image 2025-07-31 at 18.23.05_bf0939a8.jpg" alt="Hero-PC Logo">
+    </div>
+    <h1 class="brand-glow">🚀 Hero-PC – 200+ Gaming Deals</h1>
+    <nav>
+      <a href="index.html" class="nav-link">🏠 Home</a>
+      <a href="deals.html" class="nav-link">💻 Deals</a>
+      <a href="gamers.html" class="nav-link">🎮 Gamer's Paradise</a>
+       <a href="components.html" class="nav-link">🧩 PC Components</a>
+       <a href="assistant.html" class="nav-link">🤖 A.I Assistant</a>
+    </nav>
+  </header>
+
+  <section class="section">
+    <h2>🔥 Explore 200+ Hot Gaming PC Offers</h2>
+    <div class="deals-grid" id="deals-container">
+      <!-- JavaScript will generate 200 deals here -->
+    </div>
+  </section>
+
+  <div class="footer-note">
+    © 2025 Hero-PC | Powered by Amazon + Flipkart | Designed with 💚 by Gaurav Fartiyal & Harsh M
+  </div>
+
+  <script>
+    const dealsContainer = document.getElementById('deals-container');
+
+    for (let i = 1; i <= 200; i++) {
+      const price = Math.floor(Math.random() * 70000) + 30000;
+      const link = `https://amazon.in/deal${i}`;
+      const productName = `💻 Deal #${i}: Ryzen + RTX – ₹${price}`;
+
+      const dealBox = document.createElement('div');
+      dealBox.className = 'deal-box';
+
+      const a = document.createElement('a');
+      a.href = link;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      a.textContent = productName;
+
+      dealBox.appendChild(a);
+      dealsContainer.appendChild(dealBox);
+    }
+  </script>
+
+</body>
+</html>

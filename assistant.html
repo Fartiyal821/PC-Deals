@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hero-PC A.I Assistant</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="icon" type="image/jpeg" href="WhatsApp Image 2025-07-31 at 18.23.05_bf0939a8.jpg">
+  <link rel="stylesheet" href="pc.css">
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #fff;
+    }
+    header {
+      text-align: center;
+      padding: 30px 10px 20px;
+      background-color: #000000;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+    }
+    .brand-glow {
+      font-size: 2.5rem;
+      color: #1abc9c;
+      text-shadow: 0 0 10px #1abc9c;
+      margin: 10px 0;
+    }
+    nav {
+      margin-top: 15px;
+    }
+    .nav-link {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 0 15px;
+      font-size: 1rem;
+      padding: 6px 12px;
+      border-radius: 6px;
+      background-color: #1abc9c;
+      transition: background 0.3s ease;
+    }
+    .nav-link:hover {
+      background-color: #16a085;
+    }
+    .assistant-container {
+      max-width: 900px;
+      margin: 40px auto;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(88, 166, 255, 0.4);
+    }
+    h1, h2 {
+      text-align: center;
+      color: #f1c40f;
+      margin-bottom: 30px;
+    }
+    #chat-box {
+      background-color: #ecf0f1;
+      color: #2d3436;
+      padding: 20px;
+      border-radius: 10px;
+      min-height: 250px;
+      max-height: 300px;
+      overflow-y: auto;
+      margin-bottom: 25px;
+    }
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      font-size: 1rem;
+      margin: 10px 0;
+      color: #2d3436;
+    }
+    button {
+      padding: 12px 24px;
+      background: #1abc9c;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      display: block;
+      margin: 10px auto;
+    }
+    button:hover {
+      background: #16a085;
+    }
+    .user-msg { font-weight: bold; margin-top: 10px; }
+    .bot-msg { margin-left: 20px; color: #0984e3; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 class="brand-glow">🤖 Jenny – Hero-PC A.I Assistant</h1>
+    <nav>
+      <a href="index.html" class="nav-link">🏠 Home</a>
+      <a href="deals.html" class="nav-link">💻 Deals</a>
+      <a href="gamers.html" class="nav-link">🎮 Gamer's Page</a>
+      <a href="components.html" class="nav-link">🧩 PC Components</a>
+      <a href="assistant.html" class="nav-link">🤖 A.I Assistant</a>
+    </nav>
+  </header>
+
+  <div class="assistant-container">
+    <h2>Ask Jenny Anything About Hero-PC</h2>
+    <div id="chat-box"></div>
+    <input type="text" id="user-input" placeholder="Ask or say something..." />
+    <button onclick="getResponse()">Ask</button>
+
+    <h2 style="margin-top: 50px;">📨 Send Feedback</h2>
+    <input type="text" id="fb-name" placeholder="Your Name">
+    <textarea id="fb-message" rows="4" placeholder="Your Feedback..."></textarea>
+    <button onclick="sendFeedbackByEmail()">Send Feedback</button>
+  </div>
+
+  <script>
+    function getResponse() {
+      const input = document.getElementById("user-input").value.toLowerCase().trim();
+      const chatBox = document.getElementById("chat-box");
+      const userMsg = `<div class='user-msg'>👤 You: ${input}</div>`;
+
+      let botReply = "";
+
+      if (input.includes("deal") || input.includes("offer")) {
+        botReply = "📦 Jenny: You can explore all our best PC deals on the 💻 Deals page!";
+      } else if (input.includes("feedback")) {
+        botReply = "📩 Jenny: Thank you for sharing your feedback! It really helps us improve!";
+      } else if (input.includes("love") || input.includes("great") || input.includes("amazing") || input.includes("impressed")) {
+        botReply = "🥰 Jenny: We're so glad you're impressed! Thank you for your kind words!";
+      } else if (input.includes("improve") || input.includes("bad") || input.includes("not good")) {
+        botReply = "🙏 Jenny: Sorry about that. We promise to improve our website soon!";
+      } else if (input.includes("who are you") || input.includes("your name")) {
+        botReply = "💬 Jenny: I’m Jenny, your A.I assistant here to guide you on Hero-PC!";
+      } else if (input.includes("game") || input.includes("pc")) {
+        botReply = "🕹️ Jenny: Visit our Gamer’s Page to check out awesome builds!";
+      } else if (input.includes("hi") || input.includes("hello")) {
+        botReply = "👋 Jenny: Hello! I'm here to assist you with Hero-PC website queries!";
+      } else {
+        botReply = "❌ Jenny: Error – this is an external command and I'm limited to Hero-PC only.";
+      }
+
+      const botMsg = `<div class='bot-msg'>${botReply}</div>`;
+      chatBox.innerHTML += userMsg + botMsg;
+      chatBox.scrollTop = chatBox.scrollHeight;
+      document.getElementById("user-input").value = "";
+    }
+
+    function sendFeedbackByEmail() {
+      const name = document.getElementById("fb-name").value.trim();
+      const message = document.getElementById("fb-message").value.trim();
+
+      if (!name || !message) {
+        Swal.fire("Oops!", "Please fill out both fields.", "error");
+        return;
+      }
+
+      const mailtoLink = `mailto:gauravfartiyal751@gmail.com?subject=Feedback from ${encodeURIComponent(name)}&body=${encodeURIComponent(message)}`;
+      window.location.href = mailtoLink;
+
+      Swal.fire("Jenny", "✅ Thank you!! Message sent", "success");
+      document.getElementById("fb-name").value = "";
+      document.getElementById("fb-message").value = "";
+    }
+  </script>
+</body>
+</html>
